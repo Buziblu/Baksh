@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2fbem2002myl"]
+[gd_scene load_steps=12 format=3 uid="uid://c2fbem2002myl"]
 
 [ext_resource type="PackedScene" uid="uid://6x6cgweaswx2" path="res://characters/player.tscn" id="1_uayfj"]
 [ext_resource type="Script" path="res://Quit.gd" id="2_4vlmk"]
-[ext_resource type="Script" path="res://exitlevle.gd" id="3_w8kpd"]
 
 [sub_resource type="Gradient" id="Gradient_ry0f7"]
 colors = PackedColorArray(0.5701, 0.901669, 0.841563, 1, 1, 1, 1, 1)
@@ -11,7 +10,7 @@ colors = PackedColorArray(0.5701, 0.901669, 0.841563, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_ry0f7")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfmvn"]
-size = Vector2(505, 165.75)
+size = Vector2(506, 167.75)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lo4bj"]
 
@@ -22,22 +21,13 @@ colors = PackedColorArray(1, 0.662094, 0.609397, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_dodva")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gxsr"]
-size = Vector2(726.5, 91)
+size = Vector2(726.5, 95)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrfkr"]
-size = Vector2(47.5, 689)
+size = Vector2(53.5, 689)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2svi"]
-size = Vector2(26.5, 562)
-
-[sub_resource type="Gradient" id="Gradient_qtpur"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7es65"]
-gradient = SubResource("Gradient_qtpur")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y6tf"]
-size = Vector2(88, 179)
+size = Vector2(29.5, 509)
 
 [node name="Level1" type="Node2D"]
 
@@ -51,7 +41,7 @@ scale = Vector2(7.32813, 2.45313)
 texture = SubResource("GradientTexture2D_a1li2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_1"]
-position = Vector2(370.5, 298.875)
+position = Vector2(370, 297.875)
 shape = SubResource("RectangleShape2D_sfmvn")
 
 [node name="BG2" type="StaticBody2D" parent="."]
@@ -67,43 +57,26 @@ scale = Vector2(11.2977, 18.3395)
 texture = SubResource("GradientTexture2D_4hkyi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BG2"]
-position = Vector2(-224, 362.5)
+position = Vector2(-224, 360.5)
 shape = SubResource("RectangleShape2D_8gxsr")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="BG2"]
-position = Vector2(-606.75, -8)
+position = Vector2(-603.75, -8)
 shape = SubResource("RectangleShape2D_xrfkr")
 one_way_collision_margin = 0.0
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="BG2"]
-position = Vector2(591.25, -59)
+position = Vector2(589.75, -85.5)
 shape = SubResource("RectangleShape2D_n2svi")
 
 [node name="Player" parent="." instance=ExtResource("1_uayfj")]
 position = Vector2(82, 535)
 
 [node name="Quit" type="Button" parent="."]
-offset_left = 1078.0
-offset_top = 3.0
-offset_right = 1146.0
-offset_bottom = 52.0
+offset_left = 1098.0
+offset_right = 1166.0
+offset_bottom = 49.0
 text = "Quit"
 script = ExtResource("2_4vlmk")
 
-[node name="exit" type="StaticBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="exit"]
-position = Vector2(1061, 457.375)
-scale = Vector2(1.64063, 2.80078)
-texture = SubResource("GradientTexture2D_7es65")
-
-[node name="exitlevle" type="Area2D" parent="exit"]
-position = Vector2(1061, 466)
-script = ExtResource("3_w8kpd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="exit/exitlevle"]
-position = Vector2(9, -8.5)
-shape = SubResource("RectangleShape2D_8y6tf")
-
 [connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
-[connection signal="body_entered" from="exit/exitlevle" to="Quit" method="_on_exitlevle_body_entered"]
